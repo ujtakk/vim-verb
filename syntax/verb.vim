@@ -32,7 +32,7 @@ syn keyword verilogAuto contained AUTOINSERTLISP AUTOINSERTLAST
 syn keyword verilogAuto contained AUTOINSTPARAM AUTOLOGIC AUTOOUTPUTEVERY
 syn keyword verilogAuto contained AUTOREGINPUT AUTORESET AUTOTIEOFF
 syn keyword verilogAuto contained AUTOUNOFF AUTOUNUSED
-syn match   verilogAuto "AUTO_LISP\s*(.*)"
+syn match   verilogAuto "AUTO_LISP\s*(\_.\{-})"
 syn match   verilogAuto "AUTO_CONSTANT\s*(.*)"
 syn match   verilogAuto "[a-zA-Z0-9_\-]\+\s\+AUTO_TEMPLATE\s*(\_.\{-});"
 
