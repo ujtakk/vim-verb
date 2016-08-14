@@ -20,24 +20,6 @@ else
    set iskeyword=@,48-57,63,_,192-255
 endif
 
-" Additional syntax
-" ----------------------------------------------------------
-
-syn keyword verilogAuto contained AUTOARG AUTOINST AUTOSENSE AS
-syn keyword verilogAuto contained AUTOASCIIENUM AUTOSSIGNMODPORT
-syn keyword verilogAuto contained AUTOINOUT AUTOINPUTCOMP AUTOINOUTIN
-syn keyword verilogAuto contained AUTOINOUTMODPORT AUTOINOUTMODULE AUTOINOUTPARAM
-syn keyword verilogAuto contained AUTOINPUT AUTOOUTPUT AUTOWIRE AUTOREG
-syn keyword verilogAuto contained AUTOINSERTLISP AUTOINSERTLAST
-syn keyword verilogAuto contained AUTOINSTPARAM AUTOLOGIC AUTOOUTPUTEVERY
-syn keyword verilogAuto contained AUTOREGINPUT AUTORESET AUTOTIEOFF
-syn keyword verilogAuto contained AUTOUNOFF AUTOUNUSED
-syn match   verilogAuto "AUTO_LISP\s*(\_.\{-})"
-syn match   verilogAuto "AUTO_CONSTANT\s*(.*)"
-syn match   verilogAuto "[a-zA-Z0-9_\-]\+\s\+AUTO_TEMPLATE\s*(\_.\{-});"
-
-" ----------------------------------------------------------
-
 " A bunch of useful Verilog keywords
 
 syn keyword verilogStatement   always and assign automatic buf
@@ -115,8 +97,26 @@ syn match   verilogDirective   "//\s*\$s\>.*$"
 syn region  verilogDirective   start="/\*\s*\$s\>" end="\*/"
 syn region  verilogDirective   start="//\s*\$s dc_script_begin\>" end="//\s*\$s dc_script_end\>"
 
+" Additional syntax
+" ----------------------------------------------------------
+
 syn match   erbMacro    "^%.*"
 syn region  erbMacro    start="<%"  end="%>"
+
+syn keyword verilogAuto contained AUTOARG AUTOINST AUTOSENSE AS
+syn keyword verilogAuto contained AUTOASCIIENUM AUTOSSIGNMODPORT
+syn keyword verilogAuto contained AUTOINOUT AUTOINPUTCOMP AUTOINOUTIN
+syn keyword verilogAuto contained AUTOINOUTMODPORT AUTOINOUTMODULE AUTOINOUTPARAM
+syn keyword verilogAuto contained AUTOINPUT AUTOOUTPUT AUTOWIRE AUTOREG
+syn keyword verilogAuto contained AUTOINSERTLISP AUTOINSERTLAST
+syn keyword verilogAuto contained AUTOINSTPARAM AUTOLOGIC AUTOOUTPUTEVERY
+syn keyword verilogAuto contained AUTOREGINPUT AUTORESET AUTOTIEOFF
+syn keyword verilogAuto contained AUTOUNOFF AUTOUNUSED
+syn match   verilogAuto "AUTO_LISP\s*(\_.\{-})" contains=erbMacro
+syn match   verilogAuto "AUTO_CONSTANT\s*(.*)" contains=erbMacro
+syn match   verilogAuto "[a-zA-Z0-9_\-]\+\s\+AUTO_TEMPLATE\s*(\_.\{-});" contains=erbMacro
+
+" ----------------------------------------------------------
 
 "Modify the following as needed.  The trade-off is performance versus
 "functionality.
