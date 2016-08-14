@@ -20,6 +20,24 @@ else
    set iskeyword=@,48-57,63,_,192-255
 endif
 
+" Additional syntax
+" ----------------------------------------------------------
+
+syn keyword verilogAuto contained AUTOARG AUTOINST AUTOSENSE AS
+syn keyword verilogAuto contained AUTOASCIIENUM AUTOSSIGNMODPORT
+syn keyword verilogAuto contained AUTOINOUT AUTOINPUTCOMP AUTOINOUTIN
+syn keyword verilogAuto contained AUTOINOUTMODPORT AUTOINOUTMODULE AUTOINOUTPARAM
+syn keyword verilogAuto contained AUTOINPUT AUTOOUTPUT AUTOWIRE AUTOREG
+syn keyword verilogAuto contained AUTOINSERTLISP AUTOINSERTLAST
+syn keyword verilogAuto contained AUTOINSTPARAM AUTOLOGIC AUTOOUTPUTEVERY
+syn keyword verilogAuto contained AUTOREGINPUT AUTORESET AUTOTIEOFF
+syn keyword verilogAuto contained AUTOUNOFF AUTOUNUSED
+syn match   verilogAuto "AUTO_LISP\s*(.*)"
+syn match   verilogAuto "AUTO_CONSTANT\s*(.*)"
+syn match   verilogAuto "[a-zA-Z0-9_\-]\+\s\+AUTO_TEMPLATE\s*(\_.\{-});"
+
+" ----------------------------------------------------------
+
 " A bunch of useful Verilog keywords
 
 syn keyword verilogStatement   always and assign automatic buf
@@ -54,8 +72,8 @@ syn keyword verilogTodo contained TODO FIXME NOTE
 
 syn match   verilogOperator "[&|~><!)(*#%@+/=?:;}{,.\^\-\[\]]"
 
-syn region  verilogComment start="/\*" end="\*/" contains=verilogTodo,@Spell
-syn match   verilogComment "//.*" contains=verilogTodo,@Spell
+syn region  verilogComment start="/\*" end="\*/" contains=verilogTodo,verilogAuto,@Spell
+syn match   verilogComment "//.*" contains=verilogTodo,verilogAuto,@Spell
 
 "syn match   verilogGlobal "`[a-zA-Z0-9_]\+\>"
 syn match verilogGlobal "`celldefine"
@@ -130,7 +148,8 @@ if version >= 508 || !exists("did_verilog_syn_inits")
    HiLink verilogGlobal         Define
    HiLink verilogDirective      SpecialComment
    HiLink verilogEscape         Special
-   HiLink erbMacro              Macro
+   HiLink verilogAuto           Underlined
+   HiLink erbMacro              Function
 
    delcommand HiLink
 endif
