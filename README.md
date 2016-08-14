@@ -1,2 +1,2 @@
 # vim-verb
-ERB descripted Verilog syntax
+ERB-descripted Verilog syntax files
